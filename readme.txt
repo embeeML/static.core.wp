@@ -1,36 +1,90 @@
-=== Generic ===
+Here’s the updated README draft for your **StaticCore WordPress Theme**:
 
-Contributors: bhadaway
-Donate link: https://calmestghost.com/donate
-Theme link: https://generic.tools/
-Tags: accessibility-ready, one-column, two-columns, right-sidebar, custom-logo, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready, blog, e-commerce, portfolio
-Requires at least: 5.2
-Tested up to: 6.5
-Stable tag: trunk
-License: GNU General Public License v3 or Later
-License URI: https://www.gnu.org/licenses/gpl.html
+---
 
-A fully responsive starter theme for designers and developers.
+# StaticCore WordPress Theme
 
-== Description ==
+**StaticCore** is a lightweight WordPress starter theme built for static HTML/CSS websites that require CMS capabilities for select pages. Optimized for Elementor, StaticCore provides a flexible foundation for developers building streamlined WordPress projects.
 
-A fully responsive, SEO-ready, schema-ready, social-media-ready, accessibility-ready, translation-ready, and jQuery-ready starter theme for designers and developers, which comes with its own built-in, lightweight CSS grid (https://generic.tools/grid/). This generic/starter/clean/simple/bare/blank/minimalist/example/cheatsheet/white-label/HTML5/CSS3/base/foundation/framework/skeleton/boilerplate/whatever theme was created specifically as a tool to assist you with building client sites virtually from scratch or building your own themes. It's updated to reflect new standards and trends in web design to provide a solid foundation for features that every website is expected to support nowadays, but please post bug reports, suggestions for improvement, or support requests on GitHub (https://github.com/bhadaway/generic-theme/issues) if you're getting jammed up. The biggest point of discussion would be the semi-minification of Generic's code. This simplicity, like the omission of comments in the code is intentional. If you prefer formatting, you're welcome to format the code any way you like. If I was able to help you out, consider making a donation (https://calmestghost.com/donate). Thank you and enjoy!
+---
 
-Hack this theme up how you like, starting with making it your own:
+## Table of Contents
+1. [Features](#features)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Customization](#customization)
+5. [Requirements](#requirements)
+6. [Contributing](#contributing)
+7. [License](#license)
+8. [Support](#support)
 
-Open in your favorite editor and Find and Replace "generic" with your own theme slug.
+---
 
-Enjoy!
+## Features
+- Designed for static HTML/CSS websites with limited CMS needs.
+- Fully optimized for Elementor page builder integration.
+- Lightweight and fast, with minimal overhead.
+- Developer-friendly for quick setup and easy customization.
+- Perfect for projects that need just a few dynamic pages within a static framework.
 
-=== Notes ===
+---
 
-— This is a starter theme.
-— Use this tool how you like.
-— Attribution is NOT required.
+## Installation
+1. Download the latest release from the [StaticCore GitHub repository](#).
+2. Extract the contents of the ZIP file into the `wp-content/themes/` directory of your WordPress installation.
+3. Log in to your WordPress admin panel and navigate to **Appearance > Themes**.
+4. Activate the **StaticCore** theme.
 
-=== License ===
+---
 
-Generic WordPress Theme © 2015-2024 GenericTools
-Generic is distributed under the terms of the GNU GPL
+## Usage
+### Getting Started
+1. Create your static HTML/CSS structure and add it to the theme's `template-parts` folder.
+2. Use Elementor to design and manage dynamic content areas.
+3. Assign WordPress pages to specific templates included in the theme.
 
-The Generic theme package and all files contained within are distributed under the terms of the GNU GPL v3 or Later (https://www.gnu.org/licenses/gpl.html).
+### Template Structure
+- `header.php`: Contains the site header.
+- `footer.php`: Contains the site footer.
+- `index.php`: Default fallback template.
+- `page.php`: Template for WordPress pages.
+- `functions.php`: Theme setup and Elementor integration code.
+
+---
+
+## Customization
+- Update `style.css` to modify base styles for your theme.
+- Add or modify templates in the `template-parts` directory to match your site’s structure.
+- Customize the `functions.php` file to add hooks, filters, or custom Elementor widgets.
+- Use Elementor’s drag-and-drop tools for page-specific designs.
+
+---
+
+## Requirements
+- WordPress 5.0+.
+- Elementor (free or Pro version).
+- PHP 7.4+.
+- A working MySQL database.
+
+---
+
+## Contributing
+Contributions are welcome to help improve StaticCore! Follow these steps:
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes and push them to your branch.
+4. Submit a pull request with a clear description of your updates.
+
+---
+
+## License
+StaticCore WordPress Theme is licensed under the [MIT License](LICENSE).
+
+---
+
+## Support
+For any questions or issues, please open a GitHub issue or contact [Your Name or Business Name](mailto:youremail@example.com).
+
+---
+
+Feel free to copy this and adapt it for your repository. Let me know if you need help with anything else!
