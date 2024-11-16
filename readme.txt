@@ -1,6 +1,3 @@
-Here’s the updated README draft for your **StaticCore WordPress Theme**:
-
----
 
 # StaticCore WordPress Theme
 
