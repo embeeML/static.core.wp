@@ -1,5 +1,5 @@
 
-#StaticCore WordPress Theme
+# StaticCore WordPress Theme
 
 **StaticCore** is a lightweight WordPress starter theme built for static HTML/CSS websites that require CMS capabilities for select pages. Optimized for Elementor, StaticCore provides a flexible foundation for developers building streamlined WordPress projects.
 
