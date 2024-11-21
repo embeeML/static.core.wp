@@ -23,6 +23,8 @@
 - Lightweight and fast, with minimal overhead.
 - Developer-friendly for quick setup and easy customization.
 - Perfect for projects that need just a few dynamic pages within a static framework.
+- Fully Responsive
+- SEO Ready
 
 ---
 
@@ -33,12 +35,6 @@
 4. Activate the **StaticCore** theme.
 
 ---
-
-## Usage
-### Getting Started
-1. Create your static HTML/CSS structure and add it to the theme's `template-parts` folder.
-2. Use Elementor to design and manage dynamic content areas.
-3. Assign WordPress pages to specific templates included in the theme.
 
 ### Template Structure
 - `header.php`: Contains the site header.
@@ -65,22 +61,13 @@
 
 ---
 
-## Contributing
-Contributions are welcome to help improve StaticCore! Follow these steps:
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Commit your changes and push them to your branch.
-4. Submit a pull request with a clear description of your updates.
-
----
-
 ## License
 StaticCore WordPress Theme is licensed under the [MIT License](LICENSE).
 
 ---
 
 ## Support
-For any questions or issues, please open a GitHub issue or contact [Your Name or Business Name](mailto:youremail@example.com).
+For any questions or issues, please open a GitHub issue or contact me @ https://www.embeemedialab.com
 
 ---
 
