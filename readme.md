@@ -1,3 +1,7 @@
+<p align="center">
+<a href="https://blog.embeemedialab.com/staticpress">
+  <img alt="StaticCore Wordpress Theme Starter for Elementor" src="https://embeemedialab.com/assets/img/logo/navnamelite2.png"
+
 
 # StaticCore WordPress Theme
 
