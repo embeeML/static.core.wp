@@ -827,6 +827,7 @@ h2.entry-title, h3.widget-title {
       height: 30px
   }
 }
+/*--
 @media(prefers-color-scheme:light) {
   body, #container {
       background: #fff
@@ -840,6 +841,7 @@ h2.entry-title, h3.widget-title {
       background: #111
   }
 }
+  --*/
 @media print {
   * {
       color: #000 !important;
