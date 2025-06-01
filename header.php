@@ -4,18 +4,36 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="<?php if ( is_single() ) { echo esc_html( wp_strip_all_tags( get_the_excerpt(), true ) ); } else { bloginfo( 'description' ); } ?>">
-<meta name="keywords" content="<?php echo esc_html( implode( ', ', wp_get_post_tags( get_the_ID(), array( 'fields' => 'names' ) ) ) ); ?>">
-<meta property="og:image" content="<?php if ( is_single() && has_post_thumbnail() ) { the_post_thumbnail_url( 'full' ); } elseif ( has_site_icon() ) { echo esc_url( get_site_icon_url() ); } ?>">
-<meta name="twitter:card" content="photo">
-<meta name="twitter:site" content="<?php bloginfo( 'name' ); ?>">
-<meta name="twitter:title" content="<?php if ( is_single() ) { the_title(); } else { bloginfo( 'name' ); } ?>">
-<meta name="twitter:description" content="<?php if ( is_single() ) { echo esc_html( wp_strip_all_tags( get_the_excerpt(), true ) ); } else { bloginfo( 'description' ); } ?>">
-<meta name="twitter:image" content="<?php if ( is_single() && has_post_thumbnail() ) { the_post_thumbnail_url( 'full' ); } elseif ( has_site_icon() ) { echo esc_url( get_site_icon_url() ); } ?>">
-<meta name="twitter:url" content="<?php if ( is_single() ) { esc_url( the_permalink() ); } else { echo esc_url( home_url() ) . '/'; } ?>">
-<meta name="twitter:widgets:theme" content="light">
-<meta name="twitter:widgets:link-color" content="#007acc">
-<meta name="twitter:widgets:border-color" content="#fff">
-<link rel="canonical" href="<?php echo esc_url( 'https://' . $_SERVER["HTTP_HOST"] . parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) ); ?>">
+
+<!-- SEO & Social Meta -->
+<meta name="title" content="<?php bloginfo( 'name' ); ?>">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="<?php echo esc_url( home_url( add_query_arg( null, null ) ) ); ?>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="<?php bloginfo( 'name' ); ?>">
+<meta property="og:description" content="<?php bloginfo( 'description' ); ?>">
+<meta property="og:url" content="<?php echo esc_url( home_url() ); ?>">
+<meta property="og:image" content="<?php echo esc_url( get_template_directory_uri() . '/assets/img/og/sdf.og.img.png' ); ?>">
+<meta property="og:image:alt" content="The Spencer Davis Foundation - saving lives through awareness, education, training, and equipment.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<?php bloginfo( 'name' ); ?>">
+<meta name="twitter:description" content="<?php bloginfo( 'description' ); ?>">
+<meta name="twitter:image" content="<?php echo esc_url( get_template_directory_uri() . '/assets/img/og/sdf.og.img.png' ); ?>">
+<!--favicon-->
+<link rel="icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/icons/favicon.svg' ); ?>" type="image/x-icon">
+<link rel="apple-touch-icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/icons/favicon.svg' ); ?>">
+<!-- google fonts if needed, uncomment and change to the correct url for your fonts.
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=Nunito:wght@800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+-->
+<!-- Google Tag Manager
+<script async src="https://www.googletagmanager.com/gtag/replace-with-your-tag-url"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YOURTAG');
+</script>
+-->
 <script type="application/ld+json">
 {
 "@context": "https://www.schema.org/",
@@ -37,6 +55,7 @@
 </script>
 <?php wp_head(); ?>
 </head>
+
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="wrapper" class="hfeed">
