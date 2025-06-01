@@ -1,4 +1,9 @@
 <?php get_header(); ?>
+<!-- 
+** place html/php for any static sections that will be on all pages here. 
+** See examples in docs
+-->
+
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <header class="header">
