@@ -1,5 +1,5 @@
 <?php
-add_action( 'after_setup_theme', 'static-core_setup' );
+add_action( 'after_setup_theme', 'staticCore_setup' );
 function staticCore_setup() {
 load_theme_textdomain( 'static-core', get_template_directory() . '/languages' );
 add_theme_support( 'title-tag' );
@@ -14,16 +14,73 @@ global $content_width;
 if ( !isset( $content_width ) ) { $content_width = 1920; }
 register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'static-core' ) ) );
 }
-add_action( 'wp_enqueue_scripts', 'statiCore_enqueue' );
+add_action( 'wp_enqueue_scripts', 'staticCore_enqueue' );
 function staticCore_enqueue() {
+//These are the staticCore stylesheets and should remain at the top. Place all of your vendor/custom stylesheets below these to avoid overwritten styles conflicts
 wp_enqueue_style( 'staticCore-style', get_stylesheet_uri() );
 wp_enqueue_style( 'staticCore-icons', get_template_directory_uri() . '/icons/icons.css' );
+//Add Vendor Stylesheets or your own additional stylesheets here use the example below as a guide:
+//Place these styles in the /assets/css or assets/vendor/css folders 
+// 
+// wp_enqueue_style( 'staticCore-animate', get_template_directory_uri() . '/assets/vendor/css/animate.min.css', array(), '4.1.1' );
+
 wp_enqueue_script( 'jquery' );
 wp_register_script( 'straticCore-videos', get_template_directory_uri() . '/js/videos.js' );
 wp_enqueue_script( 'staticCore-videos' );
 wp_add_inline_script( 'staticCore-videos', 'jQuery(document).ready(function($){$("#wrapper").vids();});' );
+//Add vendor or custom JS files here, use the example below as a guide:
+//
+// wp_enqueue_script( 'staticCore-scrollup', get_template_directory_uri() . '/assets/vendor/js/scrollup.js', array( 'jquery' ), null, true );
 }
-add_action( 'wp_footer', 'static-core' );
+/*---
+* Font awesome kit support
+---*/
+function staticCore_enqueue_fa_kit() {
+
+    //Add your own kit URL ─ replace the token if it ever changes
+    $fa_kit_url = 'https://kit.fontawesome.com/replace-with-url.js';
+
+    wp_enqueue_script(
+        'staticCore-fa-kit',     // handle
+        $fa_kit_url,             // src
+        [],                      // no dependencies
+        null,                    // let FA control cache-busting
+        false                    // load in <head>
+    );
+}
+/*---
+ * WordPress strips unknown attributes so adding crossorigin="anonymous" back to the <script> tag.
+ ---*/
+function staticCore_fa_crossorigin( $tag, $handle, $src ) {
+
+    if ( 'staticCore-fa-kit' === $handle ) {
+        $tag = str_replace(
+            '<script ',
+            '<script crossorigin="anonymous" ',
+            $tag
+        );
+    }
+    return $tag;
+}
+/*---
+ * Restore the `$` alias after WordPress loads its copy of jQuery
+---*/
+function staticCore_enable_dollar_alias() {
+
+    // Tell WP to print this line *immediately after* jquery.min.js
+    wp_add_inline_script(
+        'jquery',                // the handle WP uses for its own jQuery
+        'window.$ = window.jQuery;', // the code to inject
+        'after'                  // place it after the script tag
+    );
+}
+// run after all scripts have been registered/enqueued
+add_action( 'wp_enqueue_scripts', 'staticCore_enable_dollar_alias', 20 );
+
+add_action( 'wp_enqueue_scripts', 'staticCore_enqueue_fa_kit' );
+add_filter( 'script_loader_tag',  'staticCore_fa_crossorigin', 10, 3 );
+
+add_action( 'wp_footer', 'staticCore_footer' );
 function staticCore_footer() {
 ?>
 <script>
