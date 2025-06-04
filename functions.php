@@ -1,7 +1,7 @@
 <?php
 add_action( 'after_setup_theme', 'staticCore_setup' );
 function staticCore_setup() {
-load_theme_textdomain( 'static-core', get_template_directory() . '/languages' );
+load_theme_textdomain( 'staticCore', get_template_directory() . '/languages' );
 add_theme_support( 'title-tag' );
 add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' );
