@@ -1,31 +1,41 @@
 <?php
+/**
+ * StaticCore functions and definitions
+ *
+ * @package StaticCore
+ * @since StaticCore 1.0.0
+ */
+
 add_action( 'after_setup_theme', 'staticCore_setup' );
 function staticCore_setup() {
-load_theme_textdomain( 'staticCore', get_template_directory() . '/languages' );
+load_theme_textdomain( 'static-core', get_template_directory() . '/languages' );
 add_theme_support( 'title-tag' );
 add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'responsive-embeds' );
 add_theme_support( 'automatic-feed-links' );
-add_theme_support( 'html5', array( 'search-form', 'navigation-widgets' ) );
+add_theme_support( 'html5', array( 'search-form', 'navigation-widgets', 'comment-list', 'comment-form', 'gallery', 'caption', 'style', 'script' ) );
 add_theme_support( 'appearance-tools' );
 add_theme_support( 'woocommerce' );
-global $content_width;
-if ( !isset( $content_width ) ) { $content_width = 1920; }
+add_theme_support( 'align-wide' );
+add_theme_support( 'editor-styles' );
+add_theme_support( 'wp-block-styles' );
+add_theme_support( 'custom-line-height' );
+add_theme_support( 'custom-spacing' );
 register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'static-core' ) ) );
 }
 add_action( 'wp_enqueue_scripts', 'staticCore_enqueue' );
 function staticCore_enqueue() {
 //These are the staticCore stylesheets and should remain at the top. Place all of your vendor/custom stylesheets below these to avoid overwritten styles conflicts
-wp_enqueue_style( 'staticCore-style', get_stylesheet_uri() );
-wp_enqueue_style( 'staticCore-icons', get_template_directory_uri() . '/icons/icons.css' );
+wp_enqueue_style( 'staticCore-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+wp_enqueue_style( 'staticCore-icons', get_template_directory_uri() . '/icons/icons.css', array(), wp_get_theme()->get( 'Version' ) );
 //Add Vendor Stylesheets or your own additional stylesheets here use the example below as a guide:
 //Place these styles in the /assets/css or assets/vendor/css folders 
 // 
 // wp_enqueue_style( 'staticCore-animate', get_template_directory_uri() . '/assets/vendor/css/animate.min.css', array(), '4.1.1' );
 
 wp_enqueue_script( 'jquery' );
-wp_register_script( 'straticCore-videos', get_template_directory_uri() . '/js/videos.js' );
+wp_register_script( 'staticCore-videos', get_template_directory_uri() . '/js/videos.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
 wp_enqueue_script( 'staticCore-videos' );
 wp_add_inline_script( 'staticCore-videos', 'jQuery(document).ready(function($){$("#wrapper").vids();});' );
 //Add vendor or custom JS files here, use the example below as a guide:
@@ -151,19 +161,19 @@ do_action( 'wp_body_open' );
 }
 add_action( 'wp_body_open', 'staticCore_skip_link', 5 );
 function staticCore_skip_link() {
-echo '<a href="#content" class="skip-link screen-reader-text">' . esc_html__( 'Skip to the content', 'staticCore' ) . '</a>';
+echo '<a href="#content" class="skip-link screen-reader-text">' . esc_html__( 'Skip to the content', 'static-core' ) . '</a>';
 }
 add_filter( 'the_content_more_link', 'staticCore_read_more_link' );
 function staticCore_read_more_link() {
 if ( !is_admin() ) {
-return ' <a href="' . esc_url( get_permalink() ) . '" class="more-link">' . sprintf( __( '...%s', 'staticCore' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
+return ' <a href="' . esc_url( get_permalink() ) . '" class="more-link">' . sprintf( __( '...%s', 'static-core' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
 }
 }
 add_filter( 'excerpt_more', 'staticCore_excerpt_read_more_link' );
 function staticCore_excerpt_read_more_link( $more ) {
 if ( !is_admin() ) {
 global $post;
-return ' <a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="more-link">' . sprintf( __( '...%s', 'staticCore' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
+return ' <a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="more-link">' . sprintf( __( '...%s', 'static-core' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
 }
 }
 add_filter( 'big_image_size_threshold', '__return_false' );
@@ -177,7 +187,7 @@ return $sizes;
 add_action( 'widgets_init', 'staticCore_widgets_init' );
 function staticCore_widgets_init() {
 register_sidebar( array(
-'name' => esc_html__( 'Sidebar Widget Area', 'staticCore' ),
+'name' => esc_html__( 'Sidebar Widget Area', 'static-core' ),
 'id' => 'primary-widget-area',
 'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 'after_widget' => '</li>',
@@ -185,11 +195,45 @@ register_sidebar( array(
 'after_title' => '</h3>',
 ) );
 }
+add_action( 'customize_register', 'staticCore_customize_selective_refresh' );
+function staticCore_customize_selective_refresh( $wp_customize ) {
+if ( isset( $wp_customize->selective_refresh ) ) {
+$wp_customize->selective_refresh->add_partial( 'blogname', array(
+'selector'        => '#site-title',
+'render_callback' => function() {
+bloginfo( 'name' );
+},
+) );
+$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
+'selector'        => '#site-description',
+'render_callback' => function() {
+bloginfo( 'description' );
+},
+) );
+}
+}
 add_action( 'wp_head', 'staticCore_pingback_header' );
 function staticCore_pingback_header() {
 if ( is_singular() && pings_open() ) {
 printf( '<link rel="pingback" href="%s">' . "\n", esc_url( get_bloginfo( 'pingback_url' ) ) );
 }
+}
+add_action( 'customize_register', 'staticCore_customize_register' );
+function staticCore_customize_register( $wp_customize ) {
+$wp_customize->add_section( 'staticCore_social_media', array(
+'title'    => esc_html__( 'Social Media', 'static-core' ),
+'priority' => 130,
+) );
+$wp_customize->add_setting( 'custom_og_image', array(
+'default'           => get_template_directory_uri() . '/screenshot.jpg',
+'sanitize_callback' => 'esc_url_raw',
+) );
+$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'custom_og_image', array(
+'label'    => esc_html__( 'Open Graph Image', 'static-core' ),
+'section'  => 'staticCore_social_media',
+'settings' => 'custom_og_image',
+'description' => esc_html__( 'Default image for social media sharing (recommended: 1200x630px)', 'static-core' ),
+) ) );
 }
 add_action( 'comment_form_before', 'staticCore_enqueue_comment_reply_script' );
 function staticCore_enqueue_comment_reply_script() {

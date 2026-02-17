@@ -1,3 +1,11 @@
+<?php
+/**
+ * The template for displaying Comments
+ *
+ * @package StaticCore
+ * @since StaticCore 1.0.0
+ */
+?>
 <div id="comments">
 <?php
 if ( have_comments() ) :

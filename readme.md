@@ -31,6 +31,13 @@
 - Perfect for projects that need just a few dynamic pages within a static framework.
 - Fully Responsive
 - SEO Ready
+- **WordPress Best Practices Compliant**: Following all latest WordPress coding standards
+- **Block Editor Support**: Comprehensive theme.json with color palettes, typography, and spacing
+- **Accessibility Ready**: Proper ARIA labels, keyboard navigation, and screen reader support
+- **Security Hardened**: Proper data escaping, sanitization, and validation
+- **Performance Optimized**: Versioned assets, selective refresh, and efficient CSS/JS loading
+- **Customizer Support**: Easy customization through WordPress Customizer
+- **Modern HTML5**: Full HTML5 support for comments, search forms, navigation, and more
 
 ---
 
@@ -51,19 +58,14 @@
 
 ---
 
-## Customization
-- Update `style.css` to modify base styles for your theme.
-- Add or modify templates in the `template-parts` directory to match your site’s structure.
-- Customize the `functions.php` file to add hooks, filters, or custom Elementor widgets.
-- Use Elementor’s drag-and-drop tools for page-specific designs.
 
 ---
 
 ## Requirements
-- WordPress 5.0+.
-- Elementor (free or Pro version).
-- PHP 7.4+.
-- A working MySQL database.
+- WordPress 5.2+ (recommended 6.0+)
+- Elementor (free or Pro version) - optional but optimized for
+- PHP 7.4+ (recommended 8.0+)
+- MySQL 5.6+ or MariaDB 10.1+
 
 ---
 
