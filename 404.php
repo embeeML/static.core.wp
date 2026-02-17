@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying 404 pages (Not Found)
+ *
+ * @package StaticCore
+ * @since StaticCore 1.0.0
+ */
+
+get_header(); ?>
 <article id="post-0" class="post not-found">
 <header class="header">
 <h1 class="entry-title" itemprop="name"><?php esc_html_e( 'Not Found', 'static-core' ); ?></h1>

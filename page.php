@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying all pages
+ *
+ * @package StaticCore
+ * @since StaticCore 1.0.0
+ */
+
+get_header(); ?>
 <!-- 
 ** place html/php for any static sections that will be on all pages here. 
 ** See examples in docs

@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying Search Results pages
+ *
+ * @package StaticCore
+ * @since StaticCore 1.0.0
+ */
+
+get_header(); ?>
 <?php if ( have_posts() ) : ?>
 <header class="header">
 <h1 class="entry-title" itemprop="name"><?php printf( esc_html__( 'Search Results for: %s', 'static-core' ), get_search_query() ); ?></h1>

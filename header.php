@@ -1,3 +1,11 @@
+<?php
+/**
+ * The header template file
+ *
+ * @package StaticCore
+ * @since StaticCore 1.0.0
+ */
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> <?php staticCore_schema_type(); ?>>
 <head>

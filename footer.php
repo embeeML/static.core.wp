@@ -1,3 +1,11 @@
+<?php
+/**
+ * The footer template file
+ *
+ * @package StaticCore
+ * @since StaticCore 1.0.0
+ */
+?>
 </main>
 <?php get_sidebar(); ?>
 </div>

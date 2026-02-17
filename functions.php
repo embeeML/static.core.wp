@@ -1,4 +1,11 @@
 <?php
+/**
+ * StaticCore functions and definitions
+ *
+ * @package StaticCore
+ * @since StaticCore 1.0.0
+ */
+
 add_action( 'after_setup_theme', 'staticCore_setup' );
 function staticCore_setup() {
 load_theme_textdomain( 'static-core', get_template_directory() . '/languages' );
